@@ -35,13 +35,9 @@ export default function Gallery({ onNavigate }: GalleryProps) {
           </button>
         </div>
 
-        {/* Gallery 4-Item Grid (Simulated Masonry Layout) */}
+        {/* Gallery 4-Item Grid (Uniform Height Layout) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-up">
           {previewItems.map((item, index) => {
-            // Give different cards different heights for a high-fashion mosaic look
-            const heights = ['h-[350px]', 'h-[420px]', 'h-[380px]', 'h-[440px]'];
-            const heightClass = heights[index % heights.length];
-
             return (
               <div
                 key={item.id}
@@ -49,7 +45,7 @@ export default function Gallery({ onNavigate }: GalleryProps) {
                   onNavigate('/gallery');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className={`group relative overflow-hidden bg-white border border-champagne/10 shadow-sm cursor-pointer ${heightClass} transition-all duration-700`}
+                className="group relative overflow-hidden bg-white border border-champagne/10 shadow-sm cursor-pointer h-[380px] w-full transition-all duration-700"
               >
                 {/* Image under scale zoom */}
                 <img

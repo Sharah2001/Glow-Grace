@@ -109,6 +109,15 @@ export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
+        {/* Close Button in drawer top-right */}
+        <button
+          onClick={() => setIsOpen(false)}
+          className="absolute top-6 right-6 text-onyx hover:text-gold transition-colors duration-300 focus:outline-none p-1"
+          aria-label="Close menu"
+        >
+          <X size={24} />
+        </button>
+
         <div className="flex flex-col justify-center items-center h-full space-y-8 px-6 text-center">
           <button
             onClick={() => {
