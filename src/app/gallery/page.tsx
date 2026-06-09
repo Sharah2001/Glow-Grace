@@ -41,25 +41,21 @@ export default function GalleryPage() {
           ))}
         </div>
 
-        {/* Masonry Photo Grid */}
-        <div className="columns-1 sm:columns-2 md:columns-3 gap-6 space-y-6 animate-fade-up">
-          {filteredGallery.map((item, index) => {
-            // Simulate random masonry index heights for design variations
-            const itemHeights = ['mb-6', 'pb-4', 'mb-6 pb-2'];
-            const spacing = itemHeights[index % itemHeights.length];
-
+        {/* Uniform Responsive Photo Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 animate-fade-up">
+          {filteredGallery.map((item) => {
             return (
               <div
                 key={item.id}
                 onClick={() => setExpandedImage(item)}
-                className={`break-inside-avoid relative overflow-hidden bg-white border border-champagne/10 shadow-sm cursor-zoom-in group ${spacing} transition-all duration-300`}
+                className="relative overflow-hidden bg-white border border-champagne/10 shadow-sm cursor-zoom-in group h-[380px] w-full transition-all duration-300"
               >
                 {/* Image under zoom */}
                 <img
                   src={item.image}
                   alt={item.title}
                   referrerPolicy="no-referrer"
-                  className="w-full h-auto object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
                 />
 
                 {/* Blush Glass tint hover overlay */}
