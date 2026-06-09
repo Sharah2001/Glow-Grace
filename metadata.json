@@ -1,0 +1,6 @@
+{
+  "name": "Lumière Beauty Studio",
+  "description": "Bespoke beauty treatments crafted for you in an elegant, luxury self-care sanctuary.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
