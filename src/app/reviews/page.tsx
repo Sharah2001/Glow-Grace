@@ -99,7 +99,7 @@ export default function ReviewsPage({ onNavigate, onAddReview }: ReviewsPageProp
 
           <div className="lg:col-span-6 h-60 lg:h-auto min-h-[224px] relative bg-black shrink-0 overflow-hidden">
             <img 
-              src="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&q=75&w=600" 
+              src="https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&q=35&w=400" 
               alt="Completed high-end bathroom sanitaryware installation by ModFlowPlumbing" 
               referrerPolicy="no-referrer"
               loading="lazy"

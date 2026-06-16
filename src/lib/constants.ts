@@ -70,7 +70,7 @@ export const SERVICES: Service[] = [
     description: 'Gas Safe registered troubleshooting, diagnostic checkouts, annual services, and safety certifications.',
     longDescription: 'Our Gas Safe engineers are fully equipped to diagnose and repair boiler failures of all major UK brands (Worcester Bosch, Vaillant, Baxi, Glow-worm, etc.). This service includes comprehensive visual inspections, central heating system water checks, pressure testing, flue gas analysis, and dynamic parts testing. We will supply a digital PDF Gas Safe certificate immediately on completion of any service.',
     icon: 'Flame',
-    image: 'https://images.unsplash.com/photo-1585338107529-13afc5f02586?auto=format&fit=crop&fm=webp&q=65&w=600'
+    image: 'https://images.unsplash.com/photo-1585338107529-13afc5f02586?auto=format&fit=crop&fm=webp&q=35&w=400'
   },
   {
     id: 'leak-detection',
@@ -82,7 +82,7 @@ export const SERVICES: Service[] = [
     description: 'Trace and access locating, pipe replacements, valve overhauls, and structural leak repairs.',
     longDescription: 'Water leaks can cause massive structural damages in short periods. We utilize active acoustic tracing, thermal imagery, and humidity meters to find hidden leak sources inside walls, ceilings, or under floorboards without destructive hammering. Includes immediate isolation, damaged pipe removal, copper/MDPE soldering, and system re-pressurization checks.',
     icon: 'Droplet',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&fm=webp&q=65&w=600'
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&fm=webp&q=35&w=400'
   },
   {
     id: 'drain-unblocking',
@@ -94,7 +94,7 @@ export const SERVICES: Service[] = [
     description: 'High-pressure water jetting, electro-mechanical block clearance, and drain camera inspections.',
     longDescription: 'Stubborn blockages are treated with tradesman-grade electro-mechanical coring or high-pressure water jetting. We clear silt, hair, grease, and sanitary deposits in internal sinks, toilets, or external gulleys. In complicated cases, we run a flexible CCTV drain probe to inspect structural integrity and locate root intrusions.',
     icon: 'Activity',
-    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&fm=webp&q=65&w=600'
+    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&fm=webp&q=35&w=400'
   },
   {
     id: 'central-heating',
@@ -106,7 +106,7 @@ export const SERVICES: Service[] = [
     description: 'Radiator balancing, powerflushing, pump replacements, and Smart thermostat installations.',
     longDescription: 'Optimize heating outputs and lower your utility bills. We carry out complete powerflushing of radiator circuits to remove heavy black metallic sludge, replace seized thermostatic radiator valves (TRVs), swap noisy zone valves or circulating pumps, and install intelligent heating thermostats (Nest, Hive) to modernize your system.',
     icon: 'Radio',
-    image: 'https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&fm=webp&q=65&w=600' // Gorgeous unique room vertical radiator interior panel
+    image: 'https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&fm=webp&q=35&w=400' // Gorgeous unique room vertical radiator interior panel
   },
   {
     id: 'bathroom-installation',
@@ -118,7 +118,7 @@ export const SERVICES: Service[] = [
     description: 'Full sanitaryware fitting, tap installations, showers, power-pump setups, and waste connections.',
     longDescription: 'From upgrading classic basin brassware to configuring high-end digital mixer showers, we provide neat, warrantied sanitaryware installations. Our full bathroom service includes copper and multi-layer pipework structuring, wall-hung WC frames, bespoke wetroom drainage lines, and high-quality finishing.',
     icon: 'Bath',
-    image: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&fm=webp&q=65&w=600' // Luxurious plumbing look
+    image: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&fm=webp&q=35&w=400' // Luxurious plumbing look
   },
   {
     id: 'gas-checks',
@@ -130,7 +130,7 @@ export const SERVICES: Service[] = [
     description: 'Landlord gas safety certifications, appliance testing, gas tightness, and pressure checkouts.',
     longDescription: 'UK Landlords are legally bound to have an annual Gas Safety inspection carried out. Our Gas Safe engineer certifies every gas appliance (including boiler, hob, fires) to confirm tight connections, safe gas pressure levels, perfect burner ventilation, and operational smoke/CO detectors. We issue standard legal CP12 certifications on the spot.',
     icon: 'ShieldCheck',
-    image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&fm=webp&q=65&w=600' // Technical gas analysis engineer look
+    image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&fm=webp&q=35&w=400' // Technical gas analysis engineer look
   }
 ];
 

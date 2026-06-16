@@ -417,7 +417,7 @@ export default function QuotePage({ onNavigate, onAddBooking }: QuotePageProps) 
             <div className="bg-charcoal border border-ash overflow-hidden group select-none">
               <div className="relative aspect-[4/3] bg-obsidian overflow-hidden border-b border-ash">
                 <img 
-                  src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=75&w=600" 
+                  src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=35&w=400" 
                   alt="Technical drawing layout specifying copper pipe manifold design" 
                   referrerPolicy="no-referrer"
                   loading="lazy"

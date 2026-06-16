@@ -56,7 +56,7 @@ export default function AreasCoveredPage({ onNavigate }: AreasCoveredPageProps) 
           
           <div className="lg:col-span-6 h-64 lg:h-auto min-h-[300px] relative bg-black shrink-0 overflow-hidden group">
             <img 
-              src="https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?auto=format&fit=crop&q=75&w=600" 
+              src="https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?auto=format&fit=crop&q=35&w=400" 
               alt="ModFlowPlumbing premium rapid response vehicle on-call in London" 
               referrerPolicy="no-referrer"
               loading="lazy"

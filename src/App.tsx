@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import RootLayout from './app/layout';
-import Home from './app/page';
-import ServicesPage from './app/services/page';
-import ServiceDetailPage from './app/services/[slug]/page';
-import AreasCoveredPage from './app/areas-we-cover/page';
-import EmergencyPage from './app/emergency/page';
-import QuotePage from './app/quote/page';
-import ReviewsPage from './app/reviews/page';
-import GalleryPage from './app/gallery/page';
 
-// Administrative Portal Pages
-import AdminLoginPage from './app/admin/login/page';
-import AdminDashboardPage from './app/admin/page';
-import AdminBookingsPage from './app/admin/bookings/page';
-import AdminJobsPage from './app/admin/jobs/page';
-import AdminReviewsPage from './app/admin/reviews/page';
-import AdminSettingsPage from './app/admin/settings/page';
+// Lazy loaded client pages for ultra performance
+const Home = lazy(() => import('./app/page'));
+const ServicesPage = lazy(() => import('./app/services/page'));
+const ServiceDetailPage = lazy(() => import('./app/services/[slug]/page'));
+const AreasCoveredPage = lazy(() => import('./app/areas-we-cover/page'));
+const EmergencyPage = lazy(() => import('./app/emergency/page'));
+const QuotePage = lazy(() => import('./app/quote/page'));
+const ReviewsPage = lazy(() => import('./app/reviews/page'));
+const GalleryPage = lazy(() => import('./app/gallery/page'));
+
+// Lazy loaded administrative portal pages
+const AdminLoginPage = lazy(() => import('./app/admin/login/page'));
+const AdminDashboardPage = lazy(() => import('./app/admin/page'));
+const AdminBookingsPage = lazy(() => import('./app/admin/bookings/page'));
+const AdminJobsPage = lazy(() => import('./app/admin/jobs/page'));
+const AdminReviewsPage = lazy(() => import('./app/admin/reviews/page'));
+const AdminSettingsPage = lazy(() => import('./app/admin/settings/page'));
 
 // Seed Mock Data arrays from our constants sheet
 import {
@@ -277,7 +279,9 @@ export default function App() {
   return (
     <RootLayout currentPath={currentPath} onNavigate={navigate}>
       <div className="transition-all duration-300 ease-out min-h-[60vh]">
-        {renderPage()}
+        <Suspense fallback={<PageLoader />}>
+          {renderPage()}
+        </Suspense>
       </div>
     </RootLayout>
   );

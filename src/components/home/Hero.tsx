@@ -91,7 +91,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           {/* Large, Beautiful Framing Bathroom Shot */}
           <div className="lg:col-span-4 relative group aspect-[4/5] w-full max-w-sm mx-auto border border-ash bg-charcoal overflow-hidden select-none hover:border-copper/30 transition-all duration-500 shadow-2xl">
             <img 
-              src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&fm=webp&q=65&w=500"
+              src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&fm=webp&q=35&w=400"
               alt="Luxury modern brass bathroom plumbing fittings"
               referrerPolicy="no-referrer"
               width="400"
