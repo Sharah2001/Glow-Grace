@@ -1,53 +1,56 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import SEO from '../../components/ui/SEO';
 import { SERVICES, Service } from '../../lib/constants';
 import Button from '../../components/ui/Button';
 import SectionHeader from '../../components/ui/SectionHeader';
-import { Clock, Tag, Sparkles, X, ChevronRight } from 'lucide-react';
+import PriceTag from '../../components/ui/PriceTag';
+import { Clock, ShieldCheck, CheckSquare } from 'lucide-react';
 
 interface ServicesPageProps {
   onNavigate: (path: string) => void;
-  onSelectService?: (service: Service) => void;
 }
 
-export default function ServicesPage({ onNavigate, onSelectService }: ServicesPageProps) {
+export default function ServicesPage({ onNavigate }: ServicesPageProps) {
   const [activeCategory, setActiveCategory] = useState<string>('All');
-  const [selectedDetailedService, setSelectedDetailedService] = useState<Service | null>(null);
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
 
-  const categories = ['All', 'Hair', 'Skincare', 'Nails', 'Makeup', 'Eyes', 'Wellness'];
+  const categories = ['All', 'Heating & Gas', 'Plumbing', 'Drainage'];
 
   const filteredServices = activeCategory === 'All'
     ? SERVICES
     : SERVICES.filter(s => s.category.toLowerCase() === activeCategory.toLowerCase());
 
-  const handleSelectServiceAndBook = (service: Service) => {
-    if (onSelectService) {
-      onSelectService(service);
-    }
-    onNavigate('/booking');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const handleBookService = (service: Service) => {
+    onNavigate(`/quote?service=${service.id}`);
   };
 
   return (
-    <div className="pt-28 pb-20 bg-ivory/50 min-h-screen">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        {/* Banner header */}
+    <div className="py-24 bg-obsidian min-h-screen text-bone">
+      <SEO 
+        title="Technical Service Specs & Fixed Rates"
+        description="Comprehensive specifications and upfront, transparent costs for Gas Safe boiler engineering, digital leak tracing, water pressure repair, and drain jetting."
+        canonicalPath="/services"
+      />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Page Header */}
         <SectionHeader
-          eyebrow="The Full Menu"
-          heading="Curated Dermal & Sculpting Therapies"
-          subtext="Discover our signature treatment catalogue, curated meticulously to enhance your raw, pristine beauty with safe botanical formulations."
+          eyebrow="Our Specialities"
+          heading="Plumbing, Heating & Gas Specifications"
+          subtext="We execute fully transparent, high-end mechanical works. All services are quoted in full with £0 dispatch or diagnosis fee applied on site."
           align="center"
         />
 
         {/* Filter Categories Row */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12 sm:mb-16">
+        <div className="flex flex-wrap justify-center gap-2 mb-12 sm:mb-16 select-none">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`font-body text-xs uppercase tracking-widest px-5 py-3 transition-all duration-300 border focus:outline-none cursor-pointer ${
+              className={`font-mono text-[10px] uppercase tracking-widest px-6 py-3.5 duration-200 border cursor-pointer focus:outline-none ${
                 activeCategory === cat
-                  ? 'bg-gold border-gold text-white shadow-sm font-semibold'
-                  : 'bg-white border-champagne/20 text-[#1A1A1A] hover:border-gold'
+                  ? 'bg-copper border-copper text-obsidian font-bold'
+                  : 'bg-charcoal border-ash text-smoke hover:border-copper/40'
               }`}
             >
               {cat}
@@ -56,129 +59,166 @@ export default function ServicesPage({ onNavigate, onSelectService }: ServicesPa
         </div>
 
         {/* Services Listings Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 animate-fade-up">
-          {filteredServices.map((service, index) => (
-            <div
-              key={service.id}
-              className="bg-white border border-champagne/20 p-8 md:p-10 flex flex-col justify-between group relative overflow-hidden transition-all duration-300 hover:shadow-md"
-            >
-              {/* Highlight Slide bar */}
-              <div className="absolute left-0 top-0 h-full w-[2px] bg-gold scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-top" />
-
-              <div>
-                <div className="flex justify-between items-baseline mb-4">
-                  <span className="font-accent text-[10px] tracking-widest text-mist uppercase font-bold">
+        <div className="grid grid-cols-1 gap-12 animate-fade-up">
+          {filteredServices.map((service) => {
+            return (
+              <div
+                key={service.id}
+                id={service.slug}
+                className="bg-charcoal border border-ash flex flex-col lg:flex-row group relative overflow-hidden transition-all duration-300 hover:border-copper/30"
+              >
+                {/* Visual Image Side Panel */}
+                <div className="relative lg:w-2/5 h-64 lg:h-auto min-h-[220px] overflow-hidden bg-obsidian shrink-0">
+                  <img
+                    src={service.image}
+                    alt={service.name}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover grayscale brightness-[0.70] contrast-110 group-hover:grayscale-0 group-hover:scale-105 duration-700 ease-out transition-all"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-charcoal via-charcoal/40 to-transparent"></div>
+                  
+                  {/* Category label on image banner */}
+                  <span className="absolute bottom-4 left-4 inline-flex items-center gap-1.5 px-3 py-1 bg-obsidian text-[9px] font-mono font-medium tracking-widest text-copper uppercase border border-ash">
                     {service.category}
                   </span>
-                  <span className="font-display font-medium text-gold text-xl md:text-2xl">
-                    {service.price}
-                  </span>
                 </div>
 
-                <h3 className="font-display text-xl sm:text-2xl font-semibold text-onyx mb-3 group-hover:text-gold transition-colors">
-                  {service.name}
-                </h3>
-
-                <p className="font-body text-mist text-sm leading-relaxed mb-6 font-light">
-                  {service.description}
-                </p>
-
-                <div className="flex items-center space-x-6 text-xs text-mist font-body font-light mb-8">
-                  <span className="flex items-center flex-row">
-                    <Clock size={14} className="text-gold mr-1.5 shrink-0" />
-                    {service.duration} duration
+                <div className="p-8 flex-1 flex flex-col justify-between">
+                  {/* Reference identifier */}
+                  <span className="absolute top-4 right-4 font-mono text-[8px] tracking-widest text-zinc-500 hidden sm:inline select-none">
+                    SPEC-IDX: {service.id.toUpperCase()}
                   </span>
-                  <span className="flex items-center">
-                    <Tag size={14} className="text-gold mr-1.5 shrink-0" />
-                    Botanical selection included
-                  </span>
+
+                  <div>
+                    <div className="flex justify-between items-baseline mb-4">
+                      <span className="font-mono text-[9px] tracking-widest text-copper bg-obsidian px-2.5 py-1 border border-ash uppercase font-medium">
+                        Standard Operations
+                      </span>
+                      <PriceTag price={service.price} />
+                    </div>
+
+                    <h3 className="font-serif text-2xl font-medium text-bone mb-3 group-hover:text-copper transition-colors duration-200 tracking-tight leading-none">
+                      {service.name}
+                    </h3>
+
+                    <p className="font-sans text-smoke text-sm sm:text-base leading-relaxed mb-6 max-w-3xl font-light">
+                      {service.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-smoke font-mono mb-8 border-t border-b border-ash py-3.5">
+                      <span className="flex items-center">
+                        <Clock size={13} className="text-copper mr-1.5 shrink-0" />
+                        Est. Duration: {service.duration}
+                      </span>
+                      <span className="flex items-center">
+                        <ShieldCheck size={13} className="text-emerald-500 mr-1.5 shrink-0" />
+                        12-Month Warrantied Workmanship
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* CTAs */}
+                  <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-ash">
+                    <Button
+                      variant="primary"
+                      onClick={() => handleBookService(service)}
+                      className="text-[10px] py-4 tracking-widest uppercase sm:flex-1 font-bold"
+                    >
+                      Request Callout Direct
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => setSelectedService(service)}
+                      className="text-[10px] py-4 tracking-widest uppercase sm:flex-1 font-bold"
+                    >
+                      Show Technical Specs &raquo;
+                    </Button>
+                  </div>
                 </div>
               </div>
-
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 border-t border-champagne/10">
-                <Button
-                  variant="primary"
-                  onClick={() => handleSelectServiceAndBook(service)}
-                  className="text-white hover:shadow-lg text-[10px] sm:text-xs py-3"
-                >
-                  Book Treatment Session
-                </Button>
-                <Button
-                  variant="outline"
-                  onClick={() => setSelectedDetailedService(service)}
-                  className="text-gold border-gold/40 hover:border-gold hover:bg-gold hover:text-white text-[10px] sm:text-xs py-3"
-                >
-                  View Ingredient Details
-                </Button>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
-      {/* Ingredient Details Modal Overlay */}
-      {selectedDetailedService && (
-        <div className="fixed inset-0 bg-onyx/70 backdrop-blur-sm z-[9999] flex items-center justify-center p-6 transition-all duration-300">
-          <div className="bg-white border border-champagne/20 max-w-2xl w-full p-8 md:p-10 relative overflow-y-auto max-h-[90vh]">
-            <button
-              onClick={() => setSelectedDetailedService(null)}
-              className="absolute top-6 right-6 text-[#1A1A1A] hover:text-gold transition-colors cursor-pointer focus:outline-none"
-              aria-label="Close modal"
-            >
-              <X size={24} />
-            </button>
-
-            <span className="font-accent text-gold text-xs tracking-widest uppercase block mb-2 font-semibold">
-              {selectedDetailedService.category} Ritual
-            </span>
-            <h3 className="font-display font-medium text-onyx text-3xl mb-4">
-              {selectedDetailedService.name}
-            </h3>
-
-            <div className="h-[1px] w-12 bg-champagne mb-6" />
-
-            <div className="bg-ivory p-5 mb-6 text-xs sm:text-sm font-body font-light text-mist border border-champagne/10 space-y-3">
-              <p className="flex justify-between text-onyx font-normal">
-                <span>Standard treatment duration:</span>
-                <span className="font-semibold text-gold">{selectedDetailedService.duration}</span>
-              </p>
-              <p className="flex justify-between text-onyx font-normal">
-                <span>Inclusive studio price:</span>
-                <span className="font-semibold text-gold font-display text-lg">{selectedDetailedService.price}</span>
-              </p>
+      {/* Specification Details Modal */}
+      {selectedService && (
+        <div className="fixed inset-0 bg-obsidian/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-charcoal border border-ash max-w-2xl w-full p-6 sm:p-8 relative overflow-y-auto max-h-[90vh] select-none animate-fade-up font-sans">
+            
+            <div className="flex justify-between items-start mb-6">
+              <div>
+                <span className="font-mono text-copper text-xs font-bold uppercase block">
+                  // TECHNICAL SPECIFICATION SHEET
+                </span>
+                <h3 className="font-serif font-semibold text-bone text-xl sm:text-2xl tracking-tight mt-1">
+                  {selectedService.name}
+                </h3>
+              </div>
+              <PriceTag price={selectedService.price} />
             </div>
 
-            <h4 className="font-display font-semibold text-onyx text-base mb-2">The Therapeutic Sequence:</h4>
-            <p className="font-body text-sm font-light text-mist leading-relaxed mb-6">
-              {selectedDetailedService.longDescription}
-            </p>
+            <div className="h-[1px] w-full bg-ash my-4" />
 
-            <h4 className="font-display font-semibold text-onyx text-base mb-2">Our Botanical Signature:</h4>
-            <p className="font-body text-sm font-light text-mist leading-relaxed mb-8">
-              We exclusively deploy premium certified active dermal nutrients. Completely free of sulfur, synthetic emulsifiers, parabens, or artificial pigments. Optimized for dermal sensitivity and long-term organic skin cellular restoration.
-            </p>
+            {/* Quick specifications breakdown */}
+            <div className="grid grid-cols-2 gap-4 bg-obsidian p-4 mb-6 border border-ash font-mono text-[11px] text-bone">
+              <div>
+                <span className="text-zinc-500 block uppercase text-[8px]">Estimated Effort:</span>
+                <span className="font-bold text-copper">{selectedService.duration} on-site</span>
+              </div>
+              <div>
+                <span className="text-zinc-500 block uppercase text-[8px]">On-Duty Compliance:</span>
+                <span className="font-bold text-copper">Landlord CP12 / Gas Safe</span>
+              </div>
+              <div>
+                <span className="text-zinc-500 block uppercase text-[8px]">Guarantee Guarantee:</span>
+                <span className="font-bold text-copper">1-Year Direct Warranty</span>
+              </div>
+              <div>
+                <span className="text-zinc-500 block uppercase text-[8px]">Diagnosis travel:</span>
+                <span className="font-bold text-emerald-400">£0 (Waived)</span>
+              </div>
+            </div>
 
-            <div className="flex justify-end space-x-4">
-              <Button
-                variant="ghost"
-                onClick={() => setSelectedDetailedService(null)}
-                className="text-xs"
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-serif font-medium text-bone text-sm uppercase mb-1.5 tracking-wider text-copper">Sequence of Mechanical Operations:</h4>
+                <p className="font-sans text-xs sm:text-sm text-smoke leading-relaxed font-light">
+                  {selectedService.longDescription}
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-serif font-medium text-bone text-sm uppercase mb-1.5 tracking-wider text-copper">Quality Standards:</h4>
+                <p className="font-sans text-xs sm:text-sm text-smoke leading-relaxed font-light">
+                  We use heavy-wall copper pipes and custom brass couples. Heat soldered joints are clean, lead-free and Gas Safe compliant, pressure-tight up to 10bar to protect central heating flow arrays.
+                </p>
+              </div>
+            </div>
+
+            {/* Action buttons inside spec modal */}
+            <div className="flex flex-col sm:flex-row justify-end gap-3 mt-8 pt-4 border-t border-ash">
+              <button
+                onClick={() => setSelectedService(null)}
+                className="px-5 py-3 font-mono text-[10px] uppercase tracking-widest text-[#9CA3AA] hover:text-white transition-colors cursor-pointer focus:outline-none"
               >
-                Close details
-              </Button>
+                Close Spec Sheet
+              </button>
+              
               <Button
                 variant="primary"
                 onClick={() => {
-                  const serviceToBook = selectedDetailedService;
-                  setSelectedDetailedService(null);
-                  handleSelectServiceAndBook(serviceToBook);
+                  const srv = selectedService;
+                  setSelectedService(null);
+                  handleBookService(srv);
                 }}
-                className="text-xs"
+                className="text-[10px]"
               >
-                Book This Treatment
+                Book Service Callback
               </Button>
             </div>
+
           </div>
         </div>
       )}

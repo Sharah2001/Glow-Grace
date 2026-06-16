@@ -1,204 +1,341 @@
 export interface Service {
   id: string;
+  slug: string;
   name: string;
   category: string;
   price: string;
   duration: string;
   description: string;
   longDescription: string;
+  icon: string; // lucide icon name
+  image: string; // high-quality Unsplash image link
 }
 
-export interface TeamMember {
+export interface Area {
   id: string;
   name: string;
-  role: string;
-  bio: string;
-  image: string;
+  region: 'North' | 'South' | 'East' | 'West' | 'Central';
+  postcodes: string[];
+  calloutCharge: string;
+  activeEngineers: number;
 }
 
 export interface Testimonial {
   id: string;
   name: string;
   rating: number;
-  treatment: string;
+  service: string;
   quote: string;
+  area: string;
+  date: string;
 }
 
-export interface GalleryItem {
+export interface Booking {
   id: string;
-  title: string;
-  category: string;
-  image: string;
+  customerName: string;
+  phone: string;
+  email: string;
+  serviceId: string;
+  postcode: string;
+  date: string;
+  timeSlot: string;
+  status: 'New' | 'Confirmed' | 'Completed' | 'Cancelled';
+  notes?: string;
+}
+
+export interface Job {
+  id: string;
+  customerName: string;
+  phone: string;
+  serviceName: string;
+  area: string;
+  engineerName: string;
+  eta: string; // or duration
+  status: 'Pending' | 'In Progress' | 'Completed';
+  priority: 'Emergency' | 'High' | 'Standard';
+  jobReference: string; // Mono reference like FR-9042
+  notes: string;
+  address: string;
+  cost: string;
 }
 
 export const SERVICES: Service[] = [
   {
-    id: 'hair-styling',
-    name: 'Jaffna Jasmine & Crown Artistry',
-    category: 'Hair',
-    price: 'LKR 8,500',
-    duration: '60 mins',
-    description: 'Traditional hair braids, elaborate buns, expert jasmine strand (Poo) weaving, and modern styling.',
-    longDescription: 'A delicate fusion of traditional Tamil hair braiding with jasmine strands (Saram / Poo Kattal) and contemporary sculpting. Features a relaxing virgin coconut oil scalp nourishment, customized bun setting, and security-pinned flower weaves optimal for temple visits and festive occasions.',
+    id: 'boiler-repair',
+    slug: 'boiler-repair-and-servicing',
+    name: 'Boiler Repair & Servicing',
+    category: 'Heating & Gas',
+    price: 'From £85',
+    duration: '1 - 2 Hours',
+    description: 'Gas Safe registered troubleshooting, diagnostic checkouts, annual services, and safety certifications.',
+    longDescription: 'Our Gas Safe engineers are fully equipped to diagnose and repair boiler failures of all major UK brands (Worcester Bosch, Vaillant, Baxi, Glow-worm, etc.). This service includes comprehensive visual inspections, central heating system water checks, pressure testing, flue gas analysis, and dynamic parts testing. We will supply a digital PDF Gas Safe certificate immediately on completion of any service.',
+    icon: 'Flame',
+    image: 'https://images.unsplash.com/photo-1585338107529-13afc5f02586?auto=format&fit=crop&fm=webp&q=65&w=600'
   },
   {
-    id: 'facial-skin',
-    name: 'Nallur Golden Sandalwood Facial',
-    category: 'Skincare',
-    price: 'LKR 12,000',
-    duration: '75 mins',
-    description: 'Pure red sandalwood, organic wild turmeric (Kasturi Manjal), and deep botanical hydration.',
-    longDescription: 'Revive natural luminance with our legendary golden therapy. Combining hand-ground Nallur red sandalwood, cold-pressed wild turmeric, and advanced cooling herbal masks to soothe heat-stressed skin, clear active hyperpigmentation, and produce a radiant bridal glow.',
+    id: 'leak-detection',
+    slug: 'leak-detection',
+    name: 'Leak Detection & Pipe Repair',
+    category: 'Plumbing',
+    price: 'From £69',
+    duration: '1 - 3 Hours',
+    description: 'Trace and access locating, pipe replacements, valve overhauls, and structural leak repairs.',
+    longDescription: 'Water leaks can cause massive structural damages in short periods. We utilize active acoustic tracing, thermal imagery, and humidity meters to find hidden leak sources inside walls, ceilings, or under floorboards without destructive hammering. Includes immediate isolation, damaged pipe removal, copper/MDPE soldering, and system re-pressurization checks.',
+    icon: 'Droplet',
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&fm=webp&q=65&w=600'
   },
   {
-    id: 'nail-art',
-    name: 'Artisan Henna & Gel Overlay',
-    category: 'Nails',
-    price: 'LKR 6,500',
-    duration: '60 mins',
-    description: 'Intricate wedding henna designs combined with protective builder gel overlay styling.',
-    longDescription: 'Celebrate rich heritage with bespoke, hand-drawn fine henna patterns combined with modern aesthetic gel overlays. Includes a luxurious hand massage using saffron-infused oils and gentle, chemical-free cuticle nourishment for optimal health.',
+    id: 'drain-unblocking',
+    slug: 'drain-unblocking',
+    name: 'Drain Unblocking',
+    category: 'Drainage',
+    price: 'From £75',
+    duration: '45 - 90 mins',
+    description: 'High-pressure water jetting, electro-mechanical block clearance, and drain camera inspections.',
+    longDescription: 'Stubborn blockages are treated with tradesman-grade electro-mechanical coring or high-pressure water jetting. We clear silt, hair, grease, and sanitary deposits in internal sinks, toilets, or external gulleys. In complicated cases, we run a flexible CCTV drain probe to inspect structural integrity and locate root intrusions.',
+    icon: 'Activity',
+    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&fm=webp&q=65&w=600'
   },
   {
-    id: 'bridal-makeup',
-    name: 'Kanchipuram Heritage Bridal Makeover',
-    category: 'Makeup',
-    price: 'LKR 65,000',
-    duration: '180 mins',
-    description: 'Premium long-wear bridal look, temple jewel setting, and precise silk Kanchipuram saree pleating.',
-    longDescription: 'An elite signature transformation for Jaffna Hindu and Christian brides. Includes heavy-duty sweat-resistant makeup styling for humid climates, perfect jewellery layering (Thalami, Chutti, Temple sets), and exact structural pleating and secure anchoring of heavy silk/Kanchipuram sarees.',
+    id: 'central-heating',
+    slug: 'central-heating',
+    name: 'Central Heating Overhauls',
+    category: 'Heating & Gas',
+    price: 'From £120',
+    duration: '2 - 5 Hours',
+    description: 'Radiator balancing, powerflushing, pump replacements, and Smart thermostat installations.',
+    longDescription: 'Optimize heating outputs and lower your utility bills. We carry out complete powerflushing of radiator circuits to remove heavy black metallic sludge, replace seized thermostatic radiator valves (TRVs), swap noisy zone valves or circulating pumps, and install intelligent heating thermostats (Nest, Hive) to modernize your system.',
+    icon: 'Radio',
+    image: 'https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&fm=webp&q=65&w=600' // Gorgeous unique room vertical radiator interior panel
   },
   {
-    id: 'lash-brow',
-    name: 'Kajal Eye & Brow Definition',
-    category: 'Eyes',
-    price: 'LKR 7,500',
-    duration: '45 mins',
-    description: 'Surgical brow grooming, custom black-herbal lash tinting, and laminations for deep gazes.',
-    longDescription: 'Accentuate your natural beauty with sharp, clean features. Includes advanced brow shaping, intense botanical tinting using organic herbal extracts for that classic, deep South Asian kajal intensity, and lash laminations optimizing symmetry.',
+    id: 'bathroom-installation',
+    slug: 'bathroom-installation',
+    name: 'Bathroom Installation',
+    category: 'Plumbing',
+    price: 'From £299',
+    duration: '1 - 5 Days',
+    description: 'Full sanitaryware fitting, tap installations, showers, power-pump setups, and waste connections.',
+    longDescription: 'From upgrading classic basin brassware to configuring high-end digital mixer showers, we provide neat, warrantied sanitaryware installations. Our full bathroom service includes copper and multi-layer pipework structuring, wall-hung WC frames, bespoke wetroom drainage lines, and high-quality finishing.',
+    icon: 'Bath',
+    image: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&fm=webp&q=65&w=600' // Luxurious plumbing look
   },
   {
-    id: 'massage-spa',
-    name: 'Royal Elixir Ayurvedic Therapy',
-    category: 'Wellness',
-    price: 'LKR 15,000',
-    duration: '90 mins',
-    description: 'Full-body rejuvenation utilizing authentic local herbal oils, warm neem compresses, and head oils.',
-    longDescription: 'Rebalance the nervous system and soothe the mind. Our therapists utilize heirloom Ayurvedic healing recipes from Sri Lanka, incorporating heated warm neem leaf compresses, specialized sesame-neelyadi root formulas, and deep relaxation pressure points.',
-  },
+    id: 'gas-checks',
+    slug: 'gas-safety-checks',
+    name: 'Gas Safety Checks (CP12)',
+    category: 'Heating & Gas',
+    price: 'From £59',
+    duration: '45 - 60 mins',
+    description: 'Landlord gas safety certifications, appliance testing, gas tightness, and pressure checkouts.',
+    longDescription: 'UK Landlords are legally bound to have an annual Gas Safety inspection carried out. Our Gas Safe engineer certifies every gas appliance (including boiler, hob, fires) to confirm tight connections, safe gas pressure levels, perfect burner ventilation, and operational smoke/CO detectors. We issue standard legal CP12 certifications on the spot.',
+    icon: 'ShieldCheck',
+    image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&fm=webp&q=65&w=600' // Technical gas analysis engineer look
+  }
 ];
 
-export const TEAM: TeamMember[] = [
-  {
-    id: 'shanthi',
-    name: 'Shanthi Sivakumar',
-    role: 'Creative Director & Master Bridal Artisan',
-    bio: 'With over 18 years of experience draping delicate heirloom bridal silks across Jaffna and Colombo, Shanthi is highly respected for her precise Kanchipuram saree pleating and traditional temple jeweller styling.',
-    image: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=400',
-  },
-  {
-    id: 'priyanga',
-    name: 'Priyanga Thamilselvan',
-    role: 'Lead Dermal Expert & Herbal Alchemist',
-    bio: 'Deeply knowledgeable in local Sri Lankan Siddha and Ayurvedic botanical traditions, Priyanga formulates bespoke face therapies utilizing cold-pressed sandalwood, saffron extracts, and organic turmeric.',
-    image: 'https://images.unsplash.com/photo-1505628346881-b72b27e84530?auto=format&fit=crop&q=80&w=400',
-  },
-  {
-    id: 'aarani',
-    name: 'Aarani Kailas',
-    role: 'Senior Hair Sculptor & Floral Designer',
-    bio: 'Aarani excels in traditional Tamil hairstyles, matching intricate Poo Saram (jasmine hair weaves) with contemporary hair cuts, giving local brides an elegant, modern-classical look.',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400&crop=faces',
-  },
-  {
-    id: 'dharshini',
-    name: 'Dharshini Yogarajah',
-    role: 'Expert Henna Designer & Nail Stylist',
-    bio: 'Dharshini brings geometric elegance to heritage bridal skin art. She is celebrated in Jaffna for her thin, highly detailed bridal henna and long-lasting protective builder gel manicures.',
-    image: 'https://images.unsplash.com/photo-1488426862026-56bde64955e9?auto=format&fit=crop&q=80&w=400',
-  },
+export const AREAS: Area[] = [
+  { id: 'london-central', name: 'Central London (City, Westminster)', region: 'Central', postcodes: ['EC1', 'EC2', 'EC3', 'EC4', 'WC1', 'WC2', 'W1', 'SW1'], calloutCharge: '£0 (No callout fee)', activeEngineers: 3 },
+  { id: 'london-croydon', name: 'Croydon & South London', region: 'South', postcodes: ['CR0', 'CR2', 'SM1', 'SM5', 'SE19', 'SE25'], calloutCharge: '£0 (No callout fee)', activeEngineers: 4 },
+  { id: 'london-bromley', name: 'Bromley & Kent Borders', region: 'South', postcodes: ['BR1', 'BR3', 'BR5', 'DA1', 'DA5'], calloutCharge: '£0 (No callout fee)', activeEngineers: 3 },
+  { id: 'london-greenwich', name: 'Greenwich, Lewisham & South East', region: 'South', postcodes: ['SE3', 'SE10', 'SE13', 'SE18', 'SE8'], calloutCharge: '£0 (No callout fee)', activeEngineers: 5 },
+  { id: 'london-lambeth', name: 'Lambeth & Wandsworth', region: 'South', postcodes: ['SW11', 'SW12', 'SW4', 'SW8', 'SW2'], calloutCharge: '£0 (No callout fee)', activeEngineers: 4 },
+  { id: 'london-ealing', name: 'Ealing, Richmond & West London', region: 'West', postcodes: ['W5', 'W13', 'TW1', 'TW9', 'SW15'], calloutCharge: '£0 (No callout fee)', activeEngineers: 3 },
+  { id: 'london-islington', name: 'Islington, Camden & North London', region: 'North', postcodes: ['N1', 'NW1', 'NW3', 'N5', 'N7', 'N19'], calloutCharge: '£0 (No callout fee)', activeEngineers: 3 },
+  { id: 'london-tower-hamlets', name: 'Tower Hamlets & East London', region: 'East', postcodes: ['E1', 'E3', 'E14', 'E8', 'E9', 'E15'], calloutCharge: '£0 (No callout fee)', activeEngineers: 4 }
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    id: 'test-1',
-    name: 'Abirami Luxman',
+    id: 't-1',
+    name: 'Mark G.',
     rating: 5,
-    treatment: 'Kanchipuram Heritage Bridal Makeover',
-    quote: "Lumière is an absolute sanctuary in Jaffna! My bridal styling for our wedding near Nallur Kandaswamy Temple was perfect. Saree stayed impeccably fully-pleated for 12 hours straight.",
+    service: 'Boiler Repair & Servicing',
+    quote: "Our Worcester boiler cutout during a freezing cold snap. ModFlowPlumbing had an engineer at our door in Croydon within 30 minutes. He diagnosed a faulty sensor, fetched the part, and had heating back on under an hour. Outstanding response and transparent pricing.",
+    area: 'Croydon',
+    date: '2026-06-03'
   },
   {
-    id: 'test-2',
-    name: 'Dr. Luxmy Gnanasekaram',
+    id: 't-2',
+    name: 'Sarah Jenkins',
     rating: 5,
-    treatment: 'Nallur Golden Sandalwood Facial',
-    quote: "Living in the warm climate of the North can burn the skin. Priyanga's red sandalwood and turmeric treatment completely reset my hyperpigmentation. Absolutely incredible!",
+    service: 'Leak Detection',
+    quote: "Spotted wet wallpaper in our kitchen. Other plumbers wanted to rip out our custom cabinets. The ModFlowPlumbing engineer used safe acoustic sensors to pin-point a copper pinhole leak directly behind a minor baseboard. Clean, expert, and deeply impressive engineering.",
+    area: 'Bromley',
+    date: '2026-05-28'
   },
   {
-    id: 'test-3',
-    name: 'Thishanthi Ravichandran',
+    id: 't-3',
+    name: 'Alastair MacDonald',
     rating: 5,
-    treatment: 'Jaffna Jasmine & Crown Artistry',
-    quote: "The organic coconut scalp massage in combination with the beautiful jasmine flower weave was fantastic. Everyone at the temple function complimented the neatness of my traditional braid.",
+    service: 'Gas Safety Checks (CP12)',
+    quote: "As a private rental landlord in Limehouse, speed is critical. ModFlowPlumbing schedules annual CP12 checks directly with my tenants, handles safety checks professionally, and emails the PDF certificates. Very reliable and no callout fee.",
+    area: 'Tower Hamlets',
+    date: '2026-06-09'
   },
   {
-    id: 'test-4',
-    name: 'Dharshini Mahendran',
+    id: 't-4',
+    name: 'Hassan R.',
     rating: 5,
-    treatment: 'Artisan Henna & Gel Overlay',
-    quote: "Dharshini is a true artist. Her henna patterns are incredibly intricate, fine-lined, and deep in color. The bridal gel manicure lasted weeks without a single chip.",
+    service: 'Drain Unblocking',
+    quote: "Main gully overflowed over the weekend. ModFlowPlumbing arrived quickly. Cleaned up the area, jetted the drain, and cleared a heavy grease deposit instantly. Monospace estimation was absolute, didn't pay a penny extra than quoted.",
+    area: 'Islington',
+    date: '2026-05-15'
   },
   {
-    id: 'test-5',
-    name: 'Sharmila Fernando',
+    id: 't-5',
+    name: 'Emma Broadbent',
     rating: 5,
-    treatment: 'Royal Elixir Ayurvedic Therapy',
-    quote: "A sublime escape after traveling from Colombo. The heated neem leaves and therapeutic local warm oils dissolved all journey exhaustions. High-class luxury standards.",
-  },
-  {
-    id: 'test-6',
-    name: 'Kopika Sabaratnam',
-    rating: 5,
-    treatment: 'Kajal Eye & Brow Definition',
-    quote: "The herbal black lash tinting gives such a deep, stunning natural look without needing heavy daily mascara. Professional, modern, and clean.",
-  },
+    service: 'Bathroom Installation',
+    quote: "Had our traditional brass taps and high-pressure shower valve replaced in our cottage. Handled meticulously, pristine copper joint seals, and no messy silicone. 1-year guarantee papers came in the email.",
+    area: 'Richmond',
+    date: '2026-04-20'
+  }
 ];
 
-export const GALLERY: GalleryItem[] = [
+export const MOCK_BOOKINGS: Booking[] = [
   {
-    id: 'gal-1',
-    title: 'Heritage Tamil Bridal Gaze',
-    category: 'Makeup',
-    image: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=600',
+    id: 'b-1',
+    customerName: 'Alistair Ross',
+    phone: '07712 345678',
+    email: 'alistair@ross-design.co.uk',
+    serviceId: 'boiler-repair',
+    postcode: 'CR0 1XX',
+    date: '2026-06-12',
+    timeSlot: 'Morning (08:00 - 12:00)',
+    status: 'Confirmed',
+    notes: 'Worcester Greenstar making loud rattling sound then cutting out.'
   },
   {
-    id: 'gal-2',
-    title: 'Intricate Wedding Bridal Henna',
-    category: 'Nails',
-    image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=600',
+    id: 'b-2',
+    customerName: 'Fiona Gallagher',
+    phone: '07987 654321',
+    email: 'fiona.g@mymail.co.uk',
+    serviceId: 'leak-detection',
+    postcode: 'BR1 2AA',
+    date: '2026-06-12',
+    timeSlot: 'Afternoon (12:00 - 16:00)',
+    status: 'New',
+    notes: 'Water stain appearing on living room ceiling directly under bathroom.'
   },
   {
-    id: 'gal-3',
-    title: 'Elegant Jasmine Hair Braiding',
-    category: 'Hair',
-    image: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&q=80&w=600',
+    id: 'b-3',
+    customerName: 'Geoffrey Vance',
+    phone: '020 8123 4567',
+    email: 'gvance@vanceholdings.co.uk',
+    serviceId: 'gas-checks',
+    postcode: 'E14 9YY',
+    date: '2026-06-13',
+    timeSlot: 'Morning (08:00 - 12:00)',
+    status: 'Confirmed',
+    notes: 'CP12 landlord certificate for 2-bed apartment. Boiler and hob.'
   },
   {
-    id: 'gal-4',
-    title: 'Red Sandalwood & Turmeric Radiance',
-    category: 'Skincare',
-    image: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=600',
+    id: 'b-4',
+    customerName: 'Margaret Thatcher (Est)',
+    phone: '07722 991100',
+    email: 'info@margetestates.co.uk',
+    serviceId: 'drain-unblocking',
+    postcode: 'SW1A 1AA',
+    date: '2026-06-11',
+    timeSlot: 'Morning (08:00 - 12:00)',
+    status: 'Completed',
+    notes: 'Blocked kitchen waste stack causing backup.'
   },
   {
-    id: 'gal-5',
-    title: 'Herbal Black-Kajal Lash Care',
-    category: 'Eyes',
-    image: 'https://images.unsplash.com/photo-1488426862026-56bde64955e9?auto=format&fit=crop&q=80&w=600',
+    id: 'b-5',
+    customerName: 'Samir Patel',
+    phone: '07833 445566',
+    email: 'samir.p@techspace.io',
+    serviceId: 'central-heating',
+    postcode: 'N1 6PP',
+    date: '2026-06-14',
+    timeSlot: 'Evening (16:00 - 20:00)',
+    status: 'New',
+    notes: 'Install Hive hub and balance 6 radiators across three levels.'
   },
   {
-    id: 'gal-6',
-    title: 'Warm Healed Neem Leave Ayurveda',
-    category: 'Wellness',
-    image: 'https://images.unsplash.com/photo-1505628346881-b72b27e84530?auto=format&fit=crop&q=80&w=600',
+    id: 'b-6',
+    customerName: 'Clara Oswald',
+    phone: '07900 112233',
+    email: 'clara.os@tardis.co.uk',
+    serviceId: 'boiler-repair',
+    postcode: 'W5 1XX',
+    date: '2026-06-10',
+    timeSlot: 'Afternoon (12:00 - 16:00)',
+    status: 'Cancelled',
+    notes: 'No hot water. Cancelled because boiler self-healed after power cycle.'
+  }
+];
+
+export const MOCK_JOBS: Job[] = [
+  {
+    id: 'j-1',
+    customerName: 'Douglas Cooper',
+    phone: '07721 445566',
+    serviceName: 'Boiler Emergency Callout',
+    area: 'Croydon (CR0)',
+    engineerName: 'Dave Higgins (Gas Safe #4892)',
+    eta: 'ETA : 12 mins',
+    status: 'In Progress',
+    priority: 'Emergency',
+    jobReference: 'FR-9421',
+    notes: 'Emergency shutoff. Major gas smell reported in boiler cupboard. Engineer on site executing system isolation test.',
+    address: '24 Windmill Road, Croydon, Surrey CR0 2XX',
+    cost: '£180 (Fixed)'
   },
+  {
+    id: 'j-2',
+    customerName: 'Harriet Vane',
+    phone: '07922 882233',
+    serviceName: 'Leak Repaired Under Basin',
+    area: 'Greenwich (SE10)',
+    engineerName: 'Tom Fletcher',
+    eta: 'Completed 1 hr ago',
+    status: 'Completed',
+    priority: 'Standard',
+    jobReference: 'FR-9304',
+    notes: 'Kitchen sink high pressure copper supply pipe joint corroded and slow dripping. Cleaned joint, applied copper sleeve coupler, tested line at 3.5 bar.',
+    address: '8 Croom\'s Hill, Greenwich, London SE10 8ER',
+    cost: '£95'
+  },
+  {
+    id: 'j-3',
+    customerName: 'Arthur Dent',
+    phone: '07812 004488',
+    serviceName: 'Radiator Replacement',
+    area: 'Bromley (BR1)',
+    engineerName: 'Marcus Broad',
+    eta: 'Scheduled 14:00',
+    status: 'Pending',
+    priority: 'High',
+    jobReference: 'FR-9430',
+    notes: 'Install replacement double-convector 1200x600 steel radiator and smart TRV controller. Drain down needed.',
+    address: '42 Cotmandene Crescent, Bromley, BR1 4XF',
+    cost: '£165'
+  },
+  {
+    id: 'j-4',
+    customerName: 'Penelope Featherington',
+    phone: '07932 771122',
+    serviceName: 'Sewer Gully Jetting',
+    area: 'Mayfair (W1)',
+    engineerName: 'Dave Higgins (Gas Safe #4892)',
+    eta: 'ETA : 45 mins',
+    status: 'In Progress',
+    priority: 'High',
+    jobReference: 'FR-9442',
+    notes: 'Shared pathway grease choke-out. Deploying high-pressure water jetter via rear drainage access port.',
+    address: '14 Curzon Street, Mayfair, London W1J 7TR',
+    cost: '£125'
+  }
+];
+
+export const MOCK_TICKERS = [
+  "✓ Boiler repair completed — Croydon, 14 mins ago",
+  "✓ Emergency leak fixed — Bromley, 1 hr ago",
+  "✓ Landlord Gas Check (CP12) passed — Greenwich, 2 hrs ago",
+  "✓ Main sewer drain jetted & unblocked — Islington, 3 hrs ago",
+  "✓ Heating pump replaced & powerflushed — Lambeth, 4 hrs ago",
+  "✓ Pressure leak trace-locating successful — Mayfair, 5 hrs ago"
 ];

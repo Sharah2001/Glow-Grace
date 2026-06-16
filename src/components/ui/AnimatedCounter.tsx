@@ -1,10 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface AnimatedCounterProps {
   end: number;
   duration?: number; // ms
   suffix?: string;
   prefix?: string;
+  className?: string;
 }
 
 export default function AnimatedCounter({
@@ -12,6 +13,7 @@ export default function AnimatedCounter({
   duration = 1500,
   suffix = '',
   prefix = '',
+  className = '',
 }: AnimatedCounterProps) {
   const [count, setCount] = useState(0);
   const containerRef = useRef<HTMLSpanElement>(null);
@@ -54,9 +56,9 @@ export default function AnimatedCounter({
   }, [end, duration]);
 
   return (
-    <span ref={containerRef} className="font-display font-semibold tabular-nums text-onyx">
+    <span ref={containerRef} className={`font-mono font-bold tabular-nums ${className}`}>
       {prefix}
-      {count}
+      {count.toLocaleString()}
       {suffix}
     </span>
   );

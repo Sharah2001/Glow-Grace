@@ -1,4 +1,5 @@
-import { ChevronDown } from 'lucide-react';
+import React from 'react';
+import { Phone, ArrowRight, ShieldCheck, CheckCircle } from 'lucide-react';
 import Button from '../ui/Button';
 
 interface HeroProps {
@@ -6,83 +7,125 @@ interface HeroProps {
 }
 
 export default function Hero({ onNavigate }: HeroProps) {
-  const handleScrollToNext = () => {
-    const nextSection = document.getElementById('services-preview');
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section className="relative w-full h-[100vh] min-h-[600px] overflow-hidden flex items-center justify-center">
-      {/* Background with Ken Burns */}
-      <div className="absolute inset-0 overflow-hidden z-0 animate-ken-burns">
+    <section className="relative min-h-[90vh] flex items-center bg-obsidian text-bone border-b border-ash overflow-hidden pt-32 pb-20">
+      {/* Premium Full-bleed Background Image with Dark Vignette / Gradient Overlay */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=1600"
-          alt="Luxury Beauty Parlour Background"
+          src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&fm=webp&q=40&w=650"
+          srcSet="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&fm=webp&q=40&w=450 450w, https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&fm=webp&q=40&w=650 650w, https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&fm=webp&q=45&w=950 950w"
+          sizes="(max-width: 768px) 100vw, 650px"
+          alt="ModFlowPlumbing premium plumbing engineer at work"
           referrerPolicy="no-referrer"
-          crossOrigin="anonymous"
-          width={1600}
-          height={1067}
+          width="650"
+          height="433"
           fetchPriority="high"
-          loading="eager"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-35 grayscale contrast-125 brightness-[0.4] scale-105"
         />
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-onyx/40 to-onyx/55" />
+        <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/50 to-transparent" />
       </div>
 
-      {/* Floating subtle details (Decorative sparks) */}
-      <div className="absolute inset-0 bg-radial-gradient from-transparent to-onyx/30 mix-blend-overlay z-1" />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Headline and Copy Area */}
+          <div className="lg:col-span-8 space-y-7 text-left animate-fade-up">
+            {/* Trust Badges */}
+            <div className="flex flex-wrap gap-2.5 items-center">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-charcoal/80 border border-ash text-[10px] sm:text-xs font-mono font-bold tracking-wider text-copper uppercase select-none glass-badge">
+                <ShieldCheck size={12} className="text-copper shrink-0" />
+                Gas Safe Registered #123456
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-charcoal/80 border border-ash text-[10px] sm:text-xs font-mono font-bold tracking-wider text-brass-glow uppercase select-none glass-badge">
+                <CheckCircle size={12} className="text-brass-glow shrink-0" />
+                24/7 Callouts Under 1 Hr
+              </span>
+            </div>
+          
+            {/* Elegant Serif Headline */}
+            <h1 className="font-serif font-semibold text-5xl sm:text-7xl lg:text-8xl tracking-tight leading-[0.98] text-bone select-none">
+              Plumbing,<br />
+              <span className="italic font-light text-[#dfa075]">Done properly.</span>
+            </h1>
 
-      {/* Hero Content - Card Centered with Frosted-glass overlay */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center animate-fade-up">
-        <div className="backdrop-blur-md bg-white/10 border border-white/30 shadow-2xl px-8 py-14 md:px-16 md:py-20 rounded-2xl relative">
-          {/* Accent Eyebrow */}
-          <span className="font-display italic text-gold text-[10px] tracking-[0.4em] uppercase block mb-6 font-semibold animate-pulse">
-            — ESTABLISHED 2009 —
-          </span>
+            {/* Muted Premium Description */}
+            <p className="font-sans text-smoke text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed font-light">
+              Premium Gas Safe engineers serving London and the South East. Confident, transparent fixed pricing with none of the usual surprises. Warrantied craftsmanship on every single installation.
+            </p>
 
-          {/* Headline */}
-          <h1 className="font-display font-light text-white text-5xl sm:text-7xl md:text-8xl tracking-tight leading-[1.1] mb-6 drop-shadow-xs">
-            Where Beauty <br />
-            <span className="italic font-normal font-display">Becomes Art</span>
-          </h1>
+            {/* Premium action buttons */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              <Button
+                variant="primary"
+                onClick={() => onNavigate('/quote')}
+                className="group text-xs px-8 py-4.5 font-sans font-medium hover:scale-[1.02] transform duration-200"
+              >
+                Request an Estimate
+                <ArrowRight size={13} className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
 
-          {/* Subheadline */}
-          <p className="font-body text-[#FAF7F2]/90 text-sm sm:text-base md:text-lg font-light tracking-wide max-w-lg mx-auto mb-10 leading-relaxed">
-            Bespoke dermal therapies, hair sculpture, and premium nail design crafted uniquely for you, in the heart of historic Jaffna. Experience the pinnacle of luxury self-care.
-          </p>
+              <a
+                href="tel:08001234567"
+                className="px-8 py-4 bg-transparent border border-ember-red text-ember-red hover:bg-ember-red hover:text-bone font-sans font-medium text-xs uppercase tracking-wider flex items-center justify-center gap-2 duration-300 animate-pulse-ember cursor-pointer"
+              >
+                <Phone size={12} className="fill-current" />
+                Emergency Call Now
+              </a>
+            </div>
 
-          {/* Call to Actions */}
-          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-5 justify-center">
-            <Button
-              variant="primary"
-              onClick={() => onNavigate('/booking')}
-              className="text-white hover:scale-105 duration-300"
-            >
-              Book a Session
-            </Button>
-            <Button
-              variant="outline"
-              onClick={() => onNavigate('/services')}
-              className="text-white border-white/50 hover:bg-white/10 hover:text-white duration-300"
-            >
-              Explore Services
-            </Button>
+            {/* Reviews / Guarantee footer line */}
+            <div className="pt-6 border-t border-ash flex flex-wrap gap-y-3 gap-x-6 items-center text-smoke text-xs font-mono tracking-wide">
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-brass-glow">★</span>
+                ))}
+                <span className="font-sans text-bone font-semibold ml-1.5">5★ Trustpilot Rated</span>
+              </div>
+              <span className="hidden sm:inline text-ash">•</span>
+              <span>1-Year Complete Workmanship Guarantee</span>
+              <span className="hidden sm:inline text-ash">•</span>
+              <span>No Call-Out Feel</span>
+            </div>
+          </div>
+
+          {/* Large, Beautiful Framing Bathroom Shot */}
+          <div className="lg:col-span-4 relative group aspect-[4/5] w-full max-w-sm mx-auto border border-ash bg-charcoal overflow-hidden select-none hover:border-copper/30 transition-all duration-500 shadow-2xl">
+            <img 
+              src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&fm=webp&q=65&w=500"
+              alt="Luxury modern brass bathroom plumbing fittings"
+              referrerPolicy="no-referrer"
+              width="400"
+              height="500"
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover opacity-50 grayscale group-hover:grayscale-0 group-hover:scale-105 duration-700 ease-out transition-all"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/10 to-transparent" />
+            
+            {/* Fine line borders on layout corner */}
+            <div className="absolute top-3 left-3 w-3 h-3 border-t border-l border-copper/50"></div>
+            <div className="absolute top-3 right-3 w-3 h-3 border-t border-r border-copper/50"></div>
+            <div className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-copper/50"></div>
+            <div className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-copper/50"></div>
+
+            <div className="absolute bottom-5 left-5 right-5 z-10">
+              <span className="font-mono text-copper text-[10px] uppercase tracking-widest block mb-1">Project #1402</span>
+              <h3 className="font-serif font-normal text-bone text-base tracking-tight italic">
+                Bespoke Sanitaryware Fitting — Kensington
+              </h3>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Scroll cue: thin animated vertical line */}
+        <div className="hidden md:flex flex-col items-center justify-center pt-16">
+          <span className="font-mono text-[10px] text-zinc-650 uppercase tracking-widest mb-3">Scroll to discover</span>
+          <div className="w-[1px] h-12 bg-ash relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1/2 bg-copper animate-draw-line" style={{ animationDuration: '2s', animationIterationCount: 'infinite' }}></div>
           </div>
         </div>
-      </div>
 
-      {/* Elegant Scroll Indicator from Clean Minimalism design markup */}
-      <button
-        onClick={handleScrollToNext}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center space-y-2 opacity-50 hover:opacity-100 transition-opacity duration-300 cursor-pointer focus:outline-none"
-        aria-label="Scroll down"
-      >
-        <span className="text-[10px] uppercase tracking-widest text-white">Scroll</span>
-        <div className="w-px h-12 bg-gradient-to-b from-white to-transparent animate-pulse"></div>
-      </button>
+      </div>
     </section>
   );
 }

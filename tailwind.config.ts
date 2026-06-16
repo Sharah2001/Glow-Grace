@@ -9,46 +9,27 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        blush: '#F2C4CE',
-        champagne: '#EDD9A3',
-        onyx: '#1A1A1A',
-        ivory: '#FAF7F2',
-        gold: '#C9A84C',
-        mist: '#8E8E93',
+        obsidian: '#0E1113', // Page background
+        charcoal: '#1A1F23', // Cards/Section surfaces
+        ash: '#2C333A',      // Borders/Dividers
+        copper: '#D98E5C',   // Accent colors
+        'brass-glow': '#F0C896', // Highlights
+        bone: '#EDEAE4',     // Primary light text
+        smoke: '#9CA3AA',    // Muted text
+        'ember-red': '#C24A35', // Emergency highlight
       },
       fontFamily: {
-        display: ['var(--font-display)', 'Cormorant Garamond', 'serif'],
-        body: ['var(--font-body)', 'DM Sans', 'sans-serif'],
-        accent: ['var(--font-accent)', 'Italiana', 'serif'],
-      },
-      keyframes: {
-        kenBurns: {
-          '0%, 100%': { transform: 'scale(1)' },
-          '50%': { transform: 'scale(1.08)' },
-        },
-        marquee: {
-          'from': { transform: 'translateX(0)' },
-          'to': { transform: 'translateX(-50%)' },
-        },
-        floatUp: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-12px)' },
-        },
-        fadeSlideUp: {
-          'from': { opacity: '0', transform: 'translateY(24px)' },
-          'to': { opacity: '1', transform: 'translateY(0)' },
-        },
-        shimmer: {
-          'from': { backgroundPosition: '-200% 0' },
-          'to': { backgroundPosition: '200% 0' },
-        },
+        serif: ['Fraunces', 'Georgia', 'serif'],
+        sans: ['Inter', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       animation: {
-        'ken-burns': 'kenBurns 12s ease-in-out infinite',
-        'marquee': 'marquee 30s linear infinite',
-        'float': 'floatUp 3s ease-in-out infinite',
+        'marquee': 'marquee 40s linear infinite',
         'fade-up': 'fadeSlideUp 0.6s ease-out forwards',
-        'shimmer': 'shimmer 2s linear infinite',
+        'pulse-glow': 'pulseGlow 2.2s ease-in-out infinite',
+        'pulse-ember': 'pulseEmber 2.2s ease-in-out infinite',
+        'draw-line': 'drawLine 1s ease-out forwards',
+        'image-zoom': 'imageZoom 15s ease-in-out infinite alternate',
       },
     },
   },

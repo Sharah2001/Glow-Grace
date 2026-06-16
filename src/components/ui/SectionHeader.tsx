@@ -1,3 +1,6 @@
+import React from 'react';
+import { cn } from '../../lib/utils';
+
 interface SectionHeaderProps {
   eyebrow: string;
   heading: string;
@@ -16,15 +19,22 @@ export default function SectionHeader({
   const isCenter = align === 'center';
 
   return (
-    <div className={`mb-12 md:mb-16 ${isCenter ? 'text-center' : 'text-left'} ${className}`}>
-      <span className="font-display italic text-gold uppercase tracking-[0.35em] text-[10px] sm:text-xs block mb-3 font-semibold">
+    <div className={cn(
+      "mb-12 md:mb-16",
+      isCenter ? 'text-center' : 'text-left',
+      className
+    )}>
+      <span className="font-mono text-copper font-medium uppercase tracking-widest text-[11px] sm:text-xs block mb-3">
         {eyebrow}
       </span>
-      <h2 className="font-display font-light text-onyx text-3xl sm:text-4xl md:text-5xl tracking-tight leading-normal mb-4">
+      <h2 className="font-serif font-semibold text-bone text-3xl sm:text-4xl md:text-5xl tracking-tight leading-tight mb-4 select-none">
         {heading}
       </h2>
       {subtext && (
-        <p className={`font-body text-mist text-sm sm:text-base max-w-xl font-light leading-relaxed ${isCenter ? 'mx-auto' : ''}`}>
+        <p className={cn(
+          "font-sans text-smoke text-sm sm:text-base max-w-2xl leading-relaxed font-light",
+          isCenter ? 'mx-auto' : ''
+        )}>
           {subtext}
         </p>
       )}

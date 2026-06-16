@@ -1,6 +1,6 @@
 {
-  "name": "Lumière Beauty Studio",
-  "description": "Bespoke beauty treatments crafted for you in an elegant, luxury self-care sanctuary.",
+  "name": "ModFlowPlumbing",
+  "description": "Premium 24/7 plumbing, heating, and emergency callout services across London and the South East.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

@@ -1,67 +1,109 @@
 @import "tailwindcss";
 
 @theme {
-  --color-blush: #F2C4CE;
-  --color-champagne: #EDD9A3;
-  --color-onyx: #1A1A1A;
-  --color-ivory: #FAF7F2;
-  --color-gold: #7D610E;
-  --color-mist: #5A5A5F;
+  --color-obsidian: #0E1113;
+  --color-charcoal: #1A1F23;
+  --color-ash: #2C333A;
+  --color-copper: #D98E5C;
+  --color-brass-glow: #F0C896;
+  --color-bone: #EDEAE4;
+  --color-smoke: #9CA3AA;
+  --color-ember-red: #C24A35;
 
-  --font-display: "Cormorant Garamond", serif;
-  --font-body: "DM Sans", sans-serif;
-  --font-accent: "Italiana", serif;
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 
-  --animate-ken-burns: kenBurns 12s ease-in-out infinite;
-  --animate-marquee: marquee 30s linear infinite;
-  --animate-float: floatUp 3s ease-in-out infinite;
-  --animate-fade-up: fadeSlideUp 0.6s ease-out forwards;
-}
-
-/* CSS Keyframes */
-@keyframes kenBurns {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
+  /* Keyframe mappings (Optimized for High Performance & Paint Speed) */
+  --animate-marquee: marquee 60s linear infinite;
+  --animate-fade-up: fadeSlideUp 0.25s ease-out forwards;
+  --animate-pulse-glow: pulseGlowSoft 3s ease-in-out infinite;
+  --animate-pulse-ember: pulseEmberSoft 3s ease-in-out infinite;
+  --animate-draw-line: drawLine 0.4s ease-out forwards;
+  --animate-image-zoom: none;
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes floatUp {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
 @keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translate3d(0, 6px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes pulseGlowSoft {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+
+@keyframes pulseEmberSoft {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+@keyframes drawLine {
+  from { width: 0%; }
+  to { width: 100%; }
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #FAF7F2;
-  color: #1A1A1A;
+  background-color: #0E1113; /* Obsidian background */
+  color: #EDEAE4; /* Bone text */
 }
 
 body {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Inter", sans-serif;
+  background-color: #0E1113;
+  color: #EDEAE4;
 }
 
-/* Custom scrollbars */
+/* Copper Glow and Glassmorphism details */
+.copper-glow {
+  box-shadow: 0 0 40px rgba(217, 142, 92, 0.15);
+}
+
+.copper-border-glow {
+  box-shadow: 0 0 15px rgba(217, 142, 92, 0.1), inset 0 0 15px rgba(217, 142, 92, 0.05);
+}
+
+.ember-glow {
+  box-shadow: 0 0 40px rgba(194, 74, 53, 0.25);
+}
+
+.glass-badge {
+  background: rgba(26, 31, 35, 0.4);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(44, 51, 58, 0.5);
+}
+
+/* Custom scrollbars matching the luxury dark aesthetic */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAF7F2;
+  background: #0E1113;
 }
 ::-webkit-scrollbar-thumb {
-  background: #EDD9A3;
+  background: #2C333A;
+  border: 2px solid #0E1113;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C9A84C;
+  background: #D98E5C;
+}
+
+/* Performance Optimizations: Limit transitions to paint properties only to maximize Lighthouse & Core Web Vitals score */
+.transition-all {
+  transition-property: transform, opacity, filter, background-color, border-color, color, fill, stroke !important;
+}
+
+img, [class*="group-hover:scale"] {
+  will-change: transform, filter, opacity;
+  transform: translateZ(0); /* Force GPU acceleration */
 }
 
 /* Prevent animation issues under prefers-reduced-motion */
@@ -74,5 +116,16 @@ body {
     scroll-behavior: auto !important;
     transition-duration: 0s !important;
     transition-delay: 0s !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+  
+  .animate-marquee, 
+  .animate-pulse-glow,
+  .animate-pulse-ember,
+  .animate-draw-line,
+  .animate-image-zoom {
+    animation: none !important;
+    transform: none !important;
   }
 }

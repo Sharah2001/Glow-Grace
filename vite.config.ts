@@ -12,26 +12,21 @@ export default defineConfig(() => {
       },
     },
     build: {
+      minify: 'esbuild' as const,
       cssMinify: true,
-      minify: 'esbuild',
+      sourcemap: false,
       rollupOptions: {
         output: {
-          manualChunks(id) {
-            if (id.includes('node_modules')) {
-              if (id.includes('react') || id.includes('react-dom')) {
-                return 'react-core';
-              }
-              if (id.includes('motion')) {
-                return 'motion-animation';
-              }
-              if (id.includes('lucide-react')) {
-                return 'lucide-icons';
-              }
-              return 'vendor';
-            }
+          manualChunks: {
+            vendor: ['react', 'react-dom'],
+            animations: ['motion'],
+            icons: ['lucide-react'],
           },
         },
       },
+    },
+    optimizeDeps: {
+      include: ['react', 'react-dom', 'motion', 'lucide-react'],
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.

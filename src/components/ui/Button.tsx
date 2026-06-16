@@ -3,28 +3,31 @@ import { cn } from '../../lib/utils';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  variant?: 'primary' | 'outline' | 'ghost' | 'secondary' | 'pill';
+  variant?: 'primary' | 'emergency' | 'secondary' | 'outline' | 'ghost';
   className?: string;
+  id?: string;
 }
 
 export default function Button({
   children,
   variant = 'primary',
   className,
+  id,
   ...props
 }: ButtonProps) {
-  const baseStyles = 'font-body font-semibold uppercase tracking-[0.18em] text-[11px] transition-all duration-300 ease-out focus:outline-none focus:ring-1 focus:ring-gold disabled:opacity-50 disabled:cursor-not-allowed justify-center items-center inline-flex';
+  const baseStyles = 'font-sans font-medium uppercase tracking-wider text-xs px-6 py-3.5 transition-all duration-300 ease-out focus:outline-none focus:ring-1 focus:ring-copper disabled:opacity-50 disabled:cursor-not-allowed justify-center items-center inline-flex select-none cursor-pointer';
 
   const variants = {
-    primary: 'bg-gold hover:bg-gold/90 text-white border border-gold px-8 py-3.5 rounded-none hover:shadow-xs',
-    secondary: 'bg-onyx hover:bg-onyx/90 text-white border border-onyx px-8 py-3.5 rounded-none',
-    outline: 'bg-transparent hover:bg-gold hover:text-white border border-gold text-gold px-8 py-3.5 rounded-none',
-    ghost: 'bg-transparent text-onyx hover:bg-gold/10 border border-transparent px-8 py-3.5 rounded-none',
-    pill: 'bg-gold hover:bg-[#B89640] text-white border border-gold rounded-full px-8 py-2.5 shadow-xs transition-colors',
+    primary: 'bg-copper border border-copper text-obsidian hover:bg-[#e49c6d] hover:border-[#e49c6d] shadow-lg copper-glow',
+    emergency: 'bg-ember-red border border-ember-red text-bone hover:bg-opacity-90 animate-pulse-ember font-semibold shadow-lg',
+    secondary: 'bg-charcoal border border-ash text-bone hover:border-copper hover:text-copper shadow-sm',
+    outline: 'bg-transparent border border-ash text-bone hover:border-copper hover:text-copper',
+    ghost: 'bg-transparent text-smoke hover:bg-charcoal hover:text-bone border border-transparent',
   };
 
   return (
     <button
+      id={id}
       className={cn(baseStyles, variants[variant], className)}
       {...props}
     >
