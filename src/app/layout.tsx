@@ -14,17 +14,19 @@ export default function RootLayout({
   onNavigate,
 }: RootLayoutProps) {
   return (
-    <div className="bg-ivory min-h-screen text-onyx selection:bg-blush/40 flex flex-col justify-between overflow-x-hidden">
+    <div className="bg-ivory min-h-screen text-onyx selection:bg-blush/40 flex flex-col overflow-x-hidden">
       {/* Sticky header navbar */}
       <Navbar currentPath={currentPath} onNavigate={onNavigate} />
 
-      {/* Core sections */}
-      <main className="flex-grow w-full relative">
-        {children}
-      </main>
+      {/* Core sections and footer wrapper */}
+      <div className="flex-grow flex flex-col w-full">
+        <main className="flex-grow w-full relative">
+          {children}
+        </main>
 
-      {/* Corporate footer */}
-      <Footer onNavigate={onNavigate} />
+        {/* Corporate footer */}
+        <Footer onNavigate={onNavigate} />
+      </div>
     </div>
   );
 }

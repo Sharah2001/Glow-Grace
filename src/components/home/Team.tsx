@@ -25,6 +25,10 @@ export default function Team() {
                   src={member.image}
                   alt={member.name}
                   referrerPolicy="no-referrer"
+                  crossOrigin="anonymous"
+                  width={400}
+                  height={500}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                 />
 

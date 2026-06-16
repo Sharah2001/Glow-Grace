@@ -85,7 +85,7 @@ export default function Services({ onNavigate }: ServicesProps) {
 
                   {/* Pricing and Category label */}
                   <div className="flex justify-between items-baseline mb-3">
-                    <span className="font-accent text-[10px] tracking-widest text-[#8E8E93] uppercase">
+                    <span className="font-accent text-[10px] tracking-widest text-mist uppercase">
                       {service.category}
                     </span>
                     <span className="font-display font-medium text-gold text-lg">
@@ -99,7 +99,7 @@ export default function Services({ onNavigate }: ServicesProps) {
                   </h3>
 
                   {/* One-Line Description */}
-                  <p className="font-body text-[#8E8E93] text-sm leading-relaxed mb-6 font-light">
+                  <p className="font-body text-mist text-sm leading-relaxed mb-6 font-light">
                     {service.description}
                   </p>
                 </div>

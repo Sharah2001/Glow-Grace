@@ -9,15 +9,15 @@ export default function WhyUs() {
       title: 'Decades of Mastery',
       number: 16,
       suffix: '+ Years',
-      text: 'Our hand-picked team of styling directors and board-certified facial specialists hold European and transatlantic credentials, practicing the height of clinical luxury.',
+      text: 'Our hand-picked team of bridal directors and styling specialists hold deep expertise in traditional South Asian heritage designs, temple jeweller ornaments, and modern international cosmetology.',
     },
     {
       id: 'products',
       icon: Compass,
-      title: 'Boutique Green Dermal Tech',
+      title: 'Therapeutic Botanical Tech',
       number: 45,
       suffix: ' Premium Brands',
-      text: 'Active organic components meet pure medical-grade science. We exclusively formulate using pure French oils, Swiss cellular extracts, and toxin-free botanical blends.',
+      text: 'Sacred Ayurvedic wisdom meets medical-grade science. We exclusively formulate using hand-ground sandalwood, organic wild turmeric (manjal), cold-pressed virgin oils, and premium toxin-free clinical skincare.',
     },
     {
       id: 'satisfaction',
@@ -25,7 +25,7 @@ export default function WhyUs() {
       title: 'Devoted Clientele',
       number: 100,
       suffix: '% Devotion',
-      text: 'Every beauty choreograph is designed centered entirely around your ultimate nervous-system rest, resulting in beautiful skin, gorgeous flow, and consistent sanctuary.',
+      text: 'Every beauty choreograph is centered entirely around your ultimate nervous-system rest, resulting in radiant bridal glows, comfortable custom drapes, and consistent aesthetic sanctuary in Jaffna.',
     },
   ];
 

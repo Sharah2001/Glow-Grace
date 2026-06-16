@@ -28,7 +28,7 @@ export default function Gallery({ onNavigate }: GalleryProps) {
               onNavigate('/gallery');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="group font-body text-xs font-semibold uppercase tracking-widest text-[#C9A84C] hover:text-[#C9A84C]/80 inline-flex items-center mt-6 md:mt-0 cursor-pointer focus:outline-none transition-colors duration-300"
+            className="group font-body text-xs font-semibold uppercase tracking-widest text-gold hover:text-gold/90 inline-flex items-center mt-6 md:mt-0 cursor-pointer focus:outline-none transition-colors duration-300"
           >
             Vanish into the Gallery
             <ArrowRight size={14} className="ml-2 group-hover:translate-x-1.5 transition-transform duration-300" />
@@ -52,6 +52,10 @@ export default function Gallery({ onNavigate }: GalleryProps) {
                   src={item.image}
                   alt={item.title}
                   referrerPolicy="no-referrer"
+                  crossOrigin="anonymous"
+                  width={600}
+                  height={600}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-[1000ms] ease-out group-hover:scale-105"
                 />
 
@@ -74,7 +78,7 @@ export default function Gallery({ onNavigate }: GalleryProps) {
                   </h3>
 
                   {/* Text indicator fades in */}
-                  <span className="font-body text-[10px] tracking-widest uppercase font-semibold text-[#C9A84C] opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0 transition-transform">
+                  <span className="font-body text-[10px] tracking-widest uppercase font-semibold text-gold opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0 transition-transform">
                     Enlarge Photo
                   </span>
                 </div>

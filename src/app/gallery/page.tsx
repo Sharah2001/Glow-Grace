@@ -55,6 +55,10 @@ export default function GalleryPage() {
                   src={item.image}
                   alt={item.title}
                   referrerPolicy="no-referrer"
+                  crossOrigin="anonymous"
+                  width={600}
+                  height={600}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
                 />
 
@@ -108,6 +112,10 @@ export default function GalleryPage() {
               src={expandedImage.image}
               alt={expandedImage.title}
               referrerPolicy="no-referrer"
+              crossOrigin="anonymous"
+              width={1200}
+              height={800}
+              loading="eager"
               className="max-w-full max-h-[70vh] object-contain border border-gold/15"
             />
             {/* Legend bottom bar */}

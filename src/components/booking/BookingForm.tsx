@@ -93,7 +93,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
         <p className="font-accent text-gold text-xs tracking-widest uppercase font-semibold mb-6">
           Lumière Beauty Studio
         </p>
-        <div className="bg-ivory p-6 mb-8 text-left space-y-3 border border-champagne/10 font-body text-sm text-[#8E8E93]">
+        <div className="bg-ivory p-6 mb-8 text-left space-y-3 border border-champagne/10 font-body text-sm text-mist">
           <p className="border-b border-champagne/10 pb-2 text-onyx font-medium">
             Booking Overview:
           </p>
@@ -190,7 +190,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
                 >
                   <div>
                     <div className="flex justify-between items-baseline mb-2">
-                      <span className="font-accent text-[10px] tracking-widest text-[#8E8E93] uppercase font-bold group-hover:text-gold">
+                      <span className="font-accent text-[10px] tracking-widest text-mist uppercase font-bold group-hover:text-gold">
                         {service.category}
                       </span>
                       <span className="font-display font-medium text-gold text-sm">
@@ -200,7 +200,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
                     <h4 className="font-display text-lg font-semibold text-onyx group-hover:text-gold transition-colors">
                       {service.name}
                     </h4>
-                    <p className="font-body text-[#8E8E93] text-xs font-light line-clamp-2 mt-1 leading-relaxed">
+                    <p className="font-body text-mist text-xs font-light line-clamp-2 mt-1 leading-relaxed">
                       {service.description}
                     </p>
                   </div>
@@ -240,13 +240,13 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
               <div className="border border-champagne/20 p-6 bg-ivory/50">
                 <div className="flex justify-between items-center mb-4 pb-3 border-b border-champagne/10">
                   <span className="font-display font-semibold text-onyx">June 2026</span>
-                  <span className="font-accent text-[10px] uppercase tracking-widest text-[#8E8E93]">New York</span>
+                  <span className="font-accent text-[10px] uppercase tracking-widest text-mist">Jaffna</span>
                 </div>
 
                 {/* Weekdays */}
                 <div className="grid grid-cols-7 gap-2 text-center mb-2">
                   {weekdays.map((wd) => (
-                    <span key={wd} className="font-body font-light text-[10px] uppercase text-[#8E8E93] tracking-wider">
+                    <span key={wd} className="font-body font-light text-[10px] uppercase text-mist tracking-wider">
                       {wd}
                     </span>
                   ))}
@@ -266,7 +266,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
                         disabled={isSunday}
                         className={`aspect-square sm:aspect-video md:aspect-square text-xs md:text-sm font-body transition-all duration-300 focus:outline-none flex items-center justify-center border ${
                           isSunday
-                            ? 'text-[#8E8E93]/30 bg-transparent border-transparent cursor-not-allowed'
+                            ? 'text-mist/30 bg-transparent border-transparent cursor-not-allowed'
                             : isSelected
                             ? 'border-gold bg-gold text-white shadow-sm'
                             : 'border-champagne/10 hover:border-gold hover:bg-gold/5 text-onyx'
@@ -350,9 +350,9 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
             <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4 bg-ivory border border-champagne/20 p-6 text-sm font-body">
               <div>
                 <h4 className="font-display font-semibold text-onyx text-base mb-2">Selected Ritual:</h4>
-                <p className="text-[#8E8E93] text-xs font-light mb-1">{selectedService?.category}</p>
+                <p className="text-mist text-xs font-light mb-1">{selectedService?.category}</p>
                 <p className="font-medium text-gold">{selectedService?.name}</p>
-                <p className="text-[#8E8E93] text-xs font-light mt-1">{selectedService?.duration} treatment duration</p>
+                <p className="text-mist text-xs font-light mt-1">{selectedService?.duration} treatment duration</p>
               </div>
               <div className="md:border-l md:border-champagne/20 md:pl-6 pt-4 md:pt-0">
                 <h4 className="font-display font-semibold text-onyx text-base mb-2">Schedule:</h4>
@@ -373,6 +373,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
                     id="name"
                     type="text"
                     name="name"
+                    autoComplete="name"
                     required
                     value={formData.name}
                     onChange={handleInputChange}
@@ -388,6 +389,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
                     id="phone"
                     type="tel"
                     name="phone"
+                    autoComplete="tel"
                     required
                     value={formData.phone}
                     onChange={handleInputChange}
@@ -405,6 +407,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
                   id="email"
                   type="email"
                   name="email"
+                  autoComplete="email"
                   required
                   value={formData.email}
                   onChange={handleInputChange}
@@ -431,7 +434,7 @@ export default function BookingForm({ onSuccess }: BookingFormProps) {
 
             <div className="mt-8 flex justify-end items-center space-x-4 border-t border-champagne/10 pt-6">
               <span className="text-xs text-mist font-light flex items-center">
-                <AlertCircle size={14} className="text-gold mr-1" /> All pricing is complete subject to New York sales tax.
+                <AlertCircle size={14} className="text-gold mr-1" /> All pricing is complete subject to Sri Lankan taxes (SSCL/VAT) and local booking terms.
               </span>
               <Button
                 type="submit"

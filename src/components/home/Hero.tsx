@@ -16,12 +16,21 @@ export default function Hero({ onNavigate }: HeroProps) {
   return (
     <section className="relative w-full h-[100vh] min-h-[600px] overflow-hidden flex items-center justify-center">
       {/* Background with Ken Burns */}
-      <div 
-        className="absolute top-0 left-0 w-full h-full bg-cover bg-center animate-ken-burns z-0"
-        style={{
-          backgroundImage: `linear-gradient(rgba(26, 26, 26, 0.4), rgba(26, 26, 26, 0.55)), url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=1600')`
-        }}
-      />
+      <div className="absolute inset-0 overflow-hidden z-0 animate-ken-burns">
+        <img
+          src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=1600"
+          alt="Luxury Beauty Parlour Background"
+          referrerPolicy="no-referrer"
+          crossOrigin="anonymous"
+          width={1600}
+          height={1067}
+          fetchPriority="high"
+          loading="eager"
+          className="w-full h-full object-cover"
+        />
+        {/* Overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-onyx/40 to-onyx/55" />
+      </div>
 
       {/* Floating subtle details (Decorative sparks) */}
       <div className="absolute inset-0 bg-radial-gradient from-transparent to-onyx/30 mix-blend-overlay z-1" />
@@ -30,7 +39,7 @@ export default function Hero({ onNavigate }: HeroProps) {
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center animate-fade-up">
         <div className="backdrop-blur-md bg-white/10 border border-white/30 shadow-2xl px-8 py-14 md:px-16 md:py-20 rounded-2xl relative">
           {/* Accent Eyebrow */}
-          <span className="font-display italic text-[#C9A84C] text-[10px] tracking-[0.4em] uppercase block mb-6 font-semibold animate-pulse">
+          <span className="font-display italic text-gold text-[10px] tracking-[0.4em] uppercase block mb-6 font-semibold animate-pulse">
             — ESTABLISHED 2009 —
           </span>
 
@@ -42,7 +51,7 @@ export default function Hero({ onNavigate }: HeroProps) {
 
           {/* Subheadline */}
           <p className="font-body text-[#FAF7F2]/90 text-sm sm:text-base md:text-lg font-light tracking-wide max-w-lg mx-auto mb-10 leading-relaxed">
-            Bespoke dermal therapies, hair sculpture, and premium nail design crafted uniquely for you, in the heart of the city. Experience the pinnacle of luxury self-care.
+            Bespoke dermal therapies, hair sculpture, and premium nail design crafted uniquely for you, in the heart of historic Jaffna. Experience the pinnacle of luxury self-care.
           </p>
 
           {/* Call to Actions */}

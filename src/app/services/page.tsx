@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SERVICES, Service } from '../..//lib/constants';
+import { SERVICES, Service } from '../../lib/constants';
 import Button from '../../components/ui/Button';
 import SectionHeader from '../../components/ui/SectionHeader';
 import { Clock, Tag, Sparkles, X, ChevronRight } from 'lucide-react';
@@ -67,7 +67,7 @@ export default function ServicesPage({ onNavigate, onSelectService }: ServicesPa
 
               <div>
                 <div className="flex justify-between items-baseline mb-4">
-                  <span className="font-accent text-[10px] tracking-widest text-[#8E8E93] uppercase font-bold">
+                  <span className="font-accent text-[10px] tracking-widest text-mist uppercase font-bold">
                     {service.category}
                   </span>
                   <span className="font-display font-medium text-gold text-xl md:text-2xl">
@@ -79,12 +79,12 @@ export default function ServicesPage({ onNavigate, onSelectService }: ServicesPa
                   {service.name}
                 </h3>
 
-                <p className="font-body text-[#8E8E93] text-sm leading-relaxed mb-6 font-light">
+                <p className="font-body text-mist text-sm leading-relaxed mb-6 font-light">
                   {service.description}
                 </p>
 
-                <div className="flex items-center space-x-6 text-xs text-[#8E8E93] font-body font-light mb-8">
-                  <span className="flex items-center">
+                <div className="flex items-center space-x-6 text-xs text-mist font-body font-light mb-8">
+                  <span className="flex items-center flex-row">
                     <Clock size={14} className="text-gold mr-1.5 shrink-0" />
                     {service.duration} duration
                   </span>
@@ -138,7 +138,7 @@ export default function ServicesPage({ onNavigate, onSelectService }: ServicesPa
 
             <div className="h-[1px] w-12 bg-champagne mb-6" />
 
-            <div className="bg-ivory p-5 mb-6 text-xs sm:text-sm font-body font-light text-[#8E8E93] border border-champagne/10 space-y-3">
+            <div className="bg-ivory p-5 mb-6 text-xs sm:text-sm font-body font-light text-mist border border-champagne/10 space-y-3">
               <p className="flex justify-between text-onyx font-normal">
                 <span>Standard treatment duration:</span>
                 <span className="font-semibold text-gold">{selectedDetailedService.duration}</span>
@@ -150,12 +150,12 @@ export default function ServicesPage({ onNavigate, onSelectService }: ServicesPa
             </div>
 
             <h4 className="font-display font-semibold text-onyx text-base mb-2">The Therapeutic Sequence:</h4>
-            <p className="font-body text-sm font-light text-[#8E8E93] leading-relaxed mb-6">
+            <p className="font-body text-sm font-light text-mist leading-relaxed mb-6">
               {selectedDetailedService.longDescription}
             </p>
 
             <h4 className="font-display font-semibold text-onyx text-base mb-2">Our Botanical Signature:</h4>
-            <p className="font-body text-sm font-light text-[#8E8E93] leading-relaxed mb-8">
+            <p className="font-body text-sm font-light text-mist leading-relaxed mb-8">
               We exclusively deploy premium certified active dermal nutrients. Completely free of sulfur, synthetic emulsifiers, parabens, or artificial pigments. Optimized for dermal sensitivity and long-term organic skin cellular restoration.
             </p>
 
