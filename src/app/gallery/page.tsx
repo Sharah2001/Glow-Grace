@@ -27,7 +27,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     category: 'Heating & Gas',
     location: 'SE-10 Greenwich Area',
     date: 'June 2026',
-    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=75&w=600',
+    image: '/images/image03.jpg',
     duration: '1.5 Days',
     description: 'A complete central heating system overhaul, mounting a new energy-efficient combi boiler linked with fully aligned copper pipeline feeding controls and system filter installations.',
     technicianNotes: 'Removed old system boiler. Cleaned circuits with dual action magnetic flushes. Gas tight pressure verified at 19.8 mbar.'
@@ -49,7 +49,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     category: 'Heating & Gas',
     location: 'W-1 Mayfair Premium Area',
     date: 'June 2026',
-    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=75&w=600',
+    image: '/images/image0.avif',
     duration: '2 Days',
     description: 'Dynamic manifolds connecting high-grade multi-layer oxygen-barrier heating pipes symmetrically aligned on modern structural insulating layouts.',
     technicianNotes: 'Coordinated flow meters across 5 separate ground floor chambers. Static pressure test verified during screed pouring.'
@@ -60,7 +60,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     category: 'Plumbing',
     location: 'Bromley borders',
     date: 'May 2026',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800',
+    image: '/images/image04.avif',
     duration: '3 Hours',
     description: 'Non-destructive acoustic tracing and local extraction of a pinhole leak within deep wall spaces under high-pressure main supply tubes.',
     technicianNotes: 'Employed ultra-sensitive noise filters to locate subterranean frequency peaks. Cut a neat 15x15cm drywall port directly in front of the leaking solder coupling.'
@@ -82,7 +82,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     category: 'Plumbing',
     location: 'Wandsworth Sector',
     date: 'May 2026',
-    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800',
+    image: '/images/image05.avif',
     duration: '5 Hours',
     description: 'Pristine setup of modern luxury matte black mixer hobs, matching hand-pumps, ceramic basin layout, and silent concealed waste lines.',
     technicianNotes: 'Configured robust control joints. Double-welded back seals inside the wall and certified wall-hung support braces.'

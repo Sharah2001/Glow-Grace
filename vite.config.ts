@@ -17,10 +17,30 @@ export default defineConfig(() => {
       sourcemap: false,
       rollupOptions: {
         output: {
-          manualChunks: {
-            vendor: ['react', 'react-dom'],
-            animations: ['motion'],
-            icons: ['lucide-react'],
+          manualChunks(id) {
+            const cleanId = id.replace(/\\/g, '/');
+            if (cleanId.includes('node_modules')) {
+              if (cleanId.includes('react') || cleanId.includes('react-dom') || cleanId.includes('scheduler')) {
+                return 'vendor';
+              }
+              if (cleanId.includes('motion') || cleanId.includes('framer-motion')) {
+                return 'animations';
+              }
+              if (cleanId.includes('lucide-react')) {
+                return 'icons';
+              }
+              return 'vendor-libs';
+            }
+            if (
+              cleanId.includes('/components/ui/') || 
+              cleanId.includes('src/components/ui/') || 
+              cleanId.includes('/lib/constants.') || 
+              cleanId.includes('src/lib/constants.') || 
+              cleanId.includes('/lib/utils.') ||
+              cleanId.includes('src/lib/utils.')
+            ) {
+              return 'shared-core';
+            }
           },
         },
       },

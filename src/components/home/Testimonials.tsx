@@ -8,19 +8,29 @@ export default function Testimonials() {
   const [visibleCount, setVisibleCount] = useState(3);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1024) {
+    const mediaLarge = window.matchMedia('(min-width: 1024px)');
+    const mediaMedium = window.matchMedia('(min-width: 768px)');
+
+    const handleLayoutChange = () => {
+      if (mediaLarge.matches) {
         setVisibleCount(3);
-      } else if (window.innerWidth >= 768) {
+      } else if (mediaMedium.matches) {
         setVisibleCount(2);
       } else {
         setVisibleCount(1);
       }
     };
 
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    handleLayoutChange();
+
+    // Listen only to exact breakpoint crossovers instead of general, high-frequency window resize events
+    mediaLarge.addEventListener('change', handleLayoutChange);
+    mediaMedium.addEventListener('change', handleLayoutChange);
+
+    return () => {
+      mediaLarge.removeEventListener('change', handleLayoutChange);
+      mediaMedium.removeEventListener('change', handleLayoutChange);
+    };
   }, []);
 
   const maxIndex = Math.max(0, TESTIMONIALS.length - visibleCount);

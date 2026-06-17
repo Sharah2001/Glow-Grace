@@ -12,13 +12,12 @@ export default function Hero({ onNavigate }: HeroProps) {
       {/* Premium Full-bleed Background Image with Dark Vignette / Gradient Overlay */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&fm=webp&q=40&w=650"
-          srcSet="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&fm=webp&q=40&w=450 450w, https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&fm=webp&q=40&w=650 650w, https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&fm=webp&q=45&w=950 950w"
-          sizes="(max-width: 768px) 100vw, 650px"
+          src="/images/image0.avif"
           alt="ModFlowPlumbing premium plumbing engineer at work"
-          referrerPolicy="no-referrer"
           width="650"
           height="433"
+          loading="eager"
+          decoding="async"
           fetchPriority="high"
           className="w-full h-full object-cover opacity-35 grayscale contrast-125 brightness-[0.4] scale-105"
         />
@@ -91,12 +90,12 @@ export default function Hero({ onNavigate }: HeroProps) {
           {/* Large, Beautiful Framing Bathroom Shot */}
           <div className="lg:col-span-4 relative group aspect-[4/5] w-full max-w-sm mx-auto border border-ash bg-charcoal overflow-hidden select-none hover:border-copper/30 transition-all duration-500 shadow-2xl">
             <img 
-              src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&fm=webp&q=65&w=500"
+              src="/images/image01.avif"
               alt="Luxury modern brass bathroom plumbing fittings"
-              referrerPolicy="no-referrer"
               width="400"
               height="500"
               loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover opacity-50 grayscale group-hover:grayscale-0 group-hover:scale-105 duration-700 ease-out transition-all"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/10 to-transparent" />

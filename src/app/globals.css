@@ -101,9 +101,8 @@ body {
   transition-property: transform, opacity, filter, background-color, border-color, color, fill, stroke !important;
 }
 
-img, [class*="group-hover:scale"] {
-  will-change: transform, filter, opacity;
-  transform: translateZ(0); /* Force GPU acceleration */
+[class*="group-hover:scale"] {
+  transform: translate3d(0, 0, 0); /* Force lightweight GPU layer with translate3d only on hovered transforms */
 }
 
 /* Prevent animation issues under prefers-reduced-motion */
