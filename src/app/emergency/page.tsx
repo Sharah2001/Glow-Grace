@@ -192,7 +192,7 @@ export default function EmergencyPage({ onNavigate }: EmergencyPageProps) {
             <div className="bg-charcoal border border-ash overflow-hidden group select-none">
               <div className="relative aspect-[4/3] bg-obsidian overflow-hidden border-b border-ash-line">
                 <img 
-                  src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&q=75&w=600" 
+                  src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&q=35&w=400" 
                   alt="High-pressure gas safe diagnostic testing tools" 
                   referrerPolicy="no-referrer"
                   loading="lazy"

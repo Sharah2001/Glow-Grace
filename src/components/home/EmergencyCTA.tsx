@@ -7,11 +7,11 @@ export default function EmergencyCTA() {
       {/* Background trade photo (water pipe closeup / night trade work) */}
       <div className="absolute inset-0 pointer-events-none">
         <img
-          src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&fm=webp&q=60&w=800"
+          src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&fm=webp&q=40&w=650"
           alt="Emergency plumber night shift response"
           referrerPolicy="no-referrer"
-          width="800"
-          height="533"
+          width="650"
+          height="433"
           loading="lazy"
           className="w-full h-full object-cover opacity-20 grayscale brightness-50"
         />
