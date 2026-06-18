@@ -35,7 +35,7 @@ export const SERVICES: Service[] = [
     description: 'High-pressure water jetting, electro-mechanical block clearance, and drain camera inspections.',
     longDescription: 'Stubborn blockages are treated with tradesman-grade electro-mechanical coring or high-pressure water jetting. We clear silt, hair, grease, and sanitary deposits in internal sinks, toilets, or external gulleys. In complicated cases, we run a flexible CCTV drain probe to inspect structural integrity and locate root intrusions.',
     icon: 'Activity',
-    image: 'images/image003.jpg'
+    image: 'images/image003.webp'
   },
   {
     id: 'central-heating',
