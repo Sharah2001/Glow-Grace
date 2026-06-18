@@ -16,24 +16,24 @@ const PROJECT_PAIRS: ProjectPair[] = [
     title: 'Bespoke Brass Bathroom Upgrade',
     category: 'Sanitary Refitting',
     location: 'Kensington, W8',
-    beforeImg: 'https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&fm=webp&q=35&w=400',
-    afterImg: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&fm=webp&q=35&w=400'
+    beforeImg: '/images/upgrade01.webp',
+    afterImg: '/images/upgrade001.jpeg'
   },
   {
     id: 'proj-2',
     title: 'Worcester Bosch Boiler Swap',
     category: 'Heating & Gas',
     location: 'Greenwich, SE10',
-    beforeImg: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&fm=webp&q=35&w=400',
-    afterImg: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&fm=webp&q=35&w=400'
+    beforeImg: '/images/boiler002.png',
+    afterImg: '/images/boiler01.webp'
   },
   {
     id: 'proj-3',
     title: 'Underfloor Heating Manifold',
     category: 'Thermal Overhaul',
     location: 'Richmond, TW9',
-    beforeImg: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&fm=webp&q=35&w=400',
-    afterImg: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&fm=webp&q=35&w=400'
+    beforeImg: '/images/underfloor003.jpg',
+    afterImg: '/images/underfloor01.jpg'
   }
 ];
 
